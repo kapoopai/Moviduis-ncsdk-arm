@@ -1,0 +1,500 @@
+digraph output {
+	Legend [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR><TD  BGCOLOR = "#E0E0E0" COLSPAN="3">Layer</TD></TR>
+<TR><TD BGCOLOR = "#88FFFF"> Complexity <br/> (MFLOPs) </TD>
+<TD BGCOLOR = "#FF88FF"> Bandwidth <br/> (MB/s) </TD>
+<TD BGCOLOR = "#FFFF88"> Time <br/> (ms)</TD></TR>
+</TABLE>>
+ shape=plaintext]
+	Input [label="input: (1, 224, 224, 3)"]
+	"MobilenetV1/MobilenetV1/Conv2d_0/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_0/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(32, 112, 112)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 21.676032 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 1415.50 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF52"> 1.83 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	Input -> "MobilenetV1/MobilenetV1/Conv2d_0/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_1_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_1_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(32, 112, 112)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 7.225344 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 343.36 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF35"> 2.23 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_0/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_1_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_1_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_1_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 112, 112)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 51.380224 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 355.06 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF3A"> 2.17 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_1_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_1_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_2_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_2_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 56, 56)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 3.612672 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 1204.27 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF7B"> 1.27 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_1_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_2_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_2_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_2_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 56, 56)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 51.380224 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 291.50 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF74"> 1.37 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_2_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_2_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_3_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_3_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 56, 56)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 7.225344 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 557.86 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF73"> 1.38 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_2_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_3_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_3_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_3_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 56, 56)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 102.760448 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 390.27 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF43"> 2.04 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_3_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_3_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_4_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_4_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 1.806336 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 981.96 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF9E"> 0.78 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_3_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_4_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_4_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_4_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 51.380224 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 215.72 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF81"> 1.18 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_4_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_4_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_5_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_5_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 3.612672 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 485.71 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF9D"> 0.80 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_4_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_5_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_5_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_5_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 102.760448 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 193.63 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF18"> 2.63 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_5_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_5_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_6_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_6_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 0.903168 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 735.02 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB0"> 0.53 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_5_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_6_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_6_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_6_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 51.380224 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 339.61 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF8D"> 1.02 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_6_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_6_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_7_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_7_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 1.806336 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 340.61 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFAC"> 0.59 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_6_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_7_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_7_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_7_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 102.760448 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 310.52 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF35"> 2.23 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_7_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_7_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_8_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_8_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 1.806336 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 341.73 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFAC"> 0.59 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_7_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_8_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_8_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_8_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 102.760448 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 297.52 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF2E"> 2.33 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_8_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_8_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_9_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_9_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 1.806336 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 341.54 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFAC"> 0.59 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_8_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_9_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_9_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_9_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 102.760448 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 301.06 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF30"> 2.30 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_9_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_9_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_10_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_10_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 1.806336 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 340.24 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFAC"> 0.59 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_9_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_10_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_10_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_10_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 102.760448 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 302.43 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF31"> 2.29 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_10_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_10_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_11_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_11_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 1.806336 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 341.27 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFAC"> 0.59 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_10_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_11_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 102.760448 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 296.72 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF2E"> 2.33 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_11_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_12_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_12_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 0.451584 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 507.54 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBA"> 0.40 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_12_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_12_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_12_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1024, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 51.380224 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 705.17 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF6B"> 1.49 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_12_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_12_pointwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_13_depthwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_13_depthwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1024, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 0.903168 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 281.36 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB9"> 0.41 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_12_pointwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_13_depthwise/Relu6"
+	"MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1024, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 102.760448 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 705.22 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF0"> 2.97 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_13_depthwise/Relu6" -> "MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6"
+	"MobilenetV1/Logits/AvgPool_1a/AvgPool" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/Logits/AvgPool_1a/AvgPool</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1024, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 0.100352 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 634.06 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCC"> 0.15 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6" -> "MobilenetV1/Logits/AvgPool_1a/AvgPool"
+	"MobilenetV1/Logits/Conv2d_1c_1x1/BiasAdd" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/Logits/Conv2d_1c_1x1/BiasAdd</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1001, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 2.050048 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 2071.83 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF92"> 0.95 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/Logits/AvgPool_1a/AvgPool" -> "MobilenetV1/Logits/Conv2d_1c_1x1/BiasAdd"
+	"MobilenetV1/Predictions/Softmax" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">MobilenetV1/Predictions/Softmax</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1001, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#FFFFFF"> 0.003003 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFFFFF"> 20.13 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC9"> 0.19 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"MobilenetV1/Logits/Conv2d_1c_1x1/BiasAdd" -> "MobilenetV1/Predictions/Softmax"
+	Output [label="output: [1, 1, 1001]"]
+	"MobilenetV1/Predictions/Softmax" -> Output
+	Summary [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR><TD  BGCOLOR = "#C60000" COLSPAN="3">Summary</TD></TR>
+<TR><TD  BGCOLOR = "#E2E2E2" COLSPAN="3">12 SHV Processors</TD></TR>
+<TR><TD  BGCOLOR = "#DADADA" COLSPAN="3">Inference time 40.21 ms</TD></TR>
+<TR><TD  BGCOLOR = "#E2E2E2" COLSPAN="3">Bandwidth 503.99 MB/sec</TD></TR>
+<TR><TD  BGCOLOR = "#DADADA" COLSPAN="3">This network is Compute bound</TD></TR>
+</TABLE>>
+ shape=plaintext]
+}

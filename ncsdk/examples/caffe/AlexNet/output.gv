@@ -1,0 +1,409 @@
+digraph output {
+	Legend [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR><TD  BGCOLOR = "#E0E0E0" COLSPAN="3">Layer</TD></TR>
+<TR><TD BGCOLOR = "#88FFFF"> Complexity <br/> (MFLOPs) </TD>
+<TD BGCOLOR = "#FF88FF"> Bandwidth <br/> (MB/s) </TD>
+<TD BGCOLOR = "#FFFF88"> Time <br/> (ms)</TD></TR>
+</TABLE>>
+ shape=plaintext]
+	Input [label="input: (227, 227, 3)"]
+	data [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">data</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(3, 227, 227)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#B1179D"> 65718.51 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCC"> 0.00 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	Input -> data
+	conv1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(96, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#2ED1C6"> 210.8304 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FEE4FB"> 7463.05 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFAE"> 4.79 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	Input -> conv1
+	norm1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">norm1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(96, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#107FC106"> 720.61 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC7"> 0.77 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv1 -> norm1
+	pool1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(96, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.629856 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#107FA106"> 1225.30 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC9"> 0.45 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	norm1 -> pool1
+	pool1_s0 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool1_s0</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(48, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#107FA105"> 1378.18 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCB"> 0.05 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	pool1 -> pool1_s0
+	conv2_p0 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv2_p0</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#25CFC3"> 223.9488 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#108FD107"> 599.83 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFA6"> 6.06 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	pool1_s0 -> conv2_p0
+	pool1_s1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool1_s1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(48, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#106F9105"> 1599.40 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCB"> 0.04 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	pool1 -> pool1_s1
+	conv2_p1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv2_p1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#25CFC3"> 223.9488 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#108FD107"> 600.19 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFA6"> 6.06 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	pool1_s1 -> conv2_p1
+	norm2 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">norm2</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#108FD107"> 636.53 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC8"> 0.56 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv2_p0 -> norm2
+	conv2_p1 -> norm2
+	pool2 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool2</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.389376 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#107FA105"> 1325.50 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCA"> 0.27 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	norm2 -> pool2
+	conv3 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(384, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#-8C3B4"> 299.040768 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#108FD107"> 388.89 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFA5"> 6.25 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	pool2 -> conv3
+	conv3_s0 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv3_s0</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#106FA105"> 1468.97 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCB"> 0.04 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv3 -> conv3_s0
+	conv4_p0 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv4_p0</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#6BDFD9"> 112.140288 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#108FD107"> 560.05 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB8"> 3.12 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv3_s0 -> conv4_p0
+	conv3_s1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv3_s1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#106F9105"> 1719.93 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCB"> 0.04 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv3 -> conv3_s1
+	conv4_p1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv4_p1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#6BDFD9"> 112.140288 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#108FD107"> 560.43 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB8"> 3.12 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv3_s1 -> conv4_p1
+	conv4_p0_s0 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv4_p0_s0</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#106F9105"> 1738.03 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCB"> 0.04 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv4_p0 -> conv4_p0_s0
+	conv4_p1 -> conv4_p0_s0
+	conv5_p0 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv5_p0</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#82E5E0"> 74.760192 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#108FD107"> 604.75 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBC"> 2.54 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv4_p0_s0 -> conv5_p0
+	conv4_p0_s1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv4_p0_s1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#106F9105"> 1720.96 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCB"> 0.04 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv4_p0 -> conv4_p0_s1
+	conv4_p1 -> conv4_p0_s1
+	conv5_p1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv5_p1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#82E5E0"> 74.760192 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#108FD107"> 611.90 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBC"> 2.51 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv4_p0_s1 -> conv5_p1
+	pool5 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool5</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 6, 6)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.082944 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#107FB106"> 988.34 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCB"> 0.08 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv5_p0 -> pool5
+	conv5_p1 -> pool5
+	fc6 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fc6</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(4096, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.018432 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#106F7104"> 2157.23 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF0"> 33.38 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	pool5 -> fc6
+	fc7 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fc7</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(4096, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.008192 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#106F7104"> 2149.43 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF71"> 14.89 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	fc6 -> fc7
+	fc8 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fc8</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1000, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.008192 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#105F5103"> 2659.62 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBA"> 2.94 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	fc7 -> fc8
+	prob [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">prob</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1000, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.003 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#108FF108"> 9.99 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCA"> 0.19 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	fc8 -> prob
+	Output [label="output: [227, 227, 1003]"]
+	data -> Output
+	prob -> Output
+	Summary [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR><TD  BGCOLOR = "#C60000" COLSPAN="3">Summary</TD></TR>
+<TR><TD  BGCOLOR = "#E2E2E2" COLSPAN="3">12 SHV Processors</TD></TR>
+<TR><TD  BGCOLOR = "#DADADA" COLSPAN="3">Inference time 88.25 ms</TD></TR>
+<TR><TD  BGCOLOR = "#E2E2E2" COLSPAN="3">Bandwidth 1886.34 MB/sec</TD></TR>
+<TR><TD  BGCOLOR = "#DADADA" COLSPAN="3">This network is Compute bound</TD></TR>
+</TABLE>>
+ shape=plaintext]
+}

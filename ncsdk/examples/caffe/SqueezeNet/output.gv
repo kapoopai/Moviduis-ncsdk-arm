@@ -1,0 +1,541 @@
+digraph output {
+	Legend [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR><TD  BGCOLOR = "#E0E0E0" COLSPAN="3">Layer</TD></TR>
+<TR><TD BGCOLOR = "#88FFFF"> Complexity <br/> (MFLOPs) </TD>
+<TD BGCOLOR = "#FF88FF"> Bandwidth <br/> (MB/s) </TD>
+<TD BGCOLOR = "#FFFF88"> Time <br/> (ms)</TD></TR>
+</TABLE>>
+ shape=plaintext]
+	Input [label="input: (227, 227, 3)"]
+	data [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">data</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(3, 227, 227)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#B2189E"> 77593.95 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCC"> 0.00 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	Input -> data
+	conv1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(96, 111, 111)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#2ED1C6"> 347.747904 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FEE4FB"> 1638.22 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF0"> 8.84 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	Input -> conv1
+	pool1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(96, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 2.6136 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFE5FC"> 1445.26 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFA8"> 1.56 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv1 -> pool1
+	"fire2/squeeze1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire2/squeeze1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(16, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ADF0ED"> 9.2928 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFE6FC"> 1209.96 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC1"> 0.46 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	pool1 -> "fire2/squeeze1x1"
+	"fire2/expand1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire2/expand1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AEF0EE"> 6.1952 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 183.82 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC0"> 0.51 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire2/squeeze1x1" -> "fire2/expand1x1"
+	"fire2/expand3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire2/expand3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#9BEBE8"> 55.7568 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 515.08 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFA5"> 1.65 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire2/squeeze1x1" -> "fire2/expand3x3"
+	"fire3/squeeze1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire3/squeeze1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(16, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ACEFED"> 12.3904 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFE5FC"> 1478.16 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC0"> 0.50 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire2/expand1x1" -> "fire3/squeeze1x1"
+	"fire2/expand3x3" -> "fire3/squeeze1x1"
+	"fire3/expand1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire3/expand1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AEF0EE"> 6.1952 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 185.08 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC0"> 0.51 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire3/squeeze1x1" -> "fire3/expand1x1"
+	"fire3/expand3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire3/expand3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#9BEBE8"> 55.7568 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 516.53 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFA6"> 1.64 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire3/squeeze1x1" -> "fire3/expand3x3"
+	"fire4/squeeze1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire4/squeeze1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(32, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A7EEEC"> 24.7808 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFE6FC"> 1024.60 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBB"> 0.73 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire3/expand1x1" -> "fire4/squeeze1x1"
+	"fire3/expand3x3" -> "fire4/squeeze1x1"
+	"fire4/expand1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire4/expand1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A7EEEC"> 24.7808 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 193.14 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB5"> 1.00 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire4/squeeze1x1" -> "fire4/expand1x1"
+	"fire4/expand3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire4/expand3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 55, 55)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#5CDCD4"> 223.0272 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 397.61 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF67"> 4.36 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire4/squeeze1x1" -> "fire4/expand3x3"
+	pool4 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool4</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 1.679616 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFE5FC"> 1318.10 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB2"> 1.12 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire4/expand1x1" -> pool4
+	"fire4/expand3x3" -> pool4
+	"fire5/squeeze1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire5/squeeze1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(32, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ACEFED"> 11.943936 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFE7FD"> 823.24 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC1"> 0.45 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	pool4 -> "fire5/squeeze1x1"
+	"fire5/expand1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire5/expand1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AEF0EE"> 5.971968 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 165.42 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC4"> 0.32 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire5/squeeze1x1" -> "fire5/expand1x1"
+	"fire5/expand3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire5/expand3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#9CECE8"> 53.747712 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 394.75 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB0"> 1.20 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire5/squeeze1x1" -> "fire5/expand3x3"
+	"fire6/squeeze1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire6/squeeze1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(48, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AAEFEC"> 17.915904 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFE7FD"> 720.12 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBF"> 0.53 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire5/expand1x1" -> "fire6/squeeze1x1"
+	"fire5/expand3x3" -> "fire6/squeeze1x1"
+	"fire6/expand1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire6/expand1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ABEFED"> 13.436928 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 164.16 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC0"> 0.52 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire6/squeeze1x1" -> "fire6/expand1x1"
+	"fire6/expand3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire6/expand3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#83E5E0"> 120.932352 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 268.36 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF8A"> 2.84 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire6/squeeze1x1" -> "fire6/expand3x3"
+	"fire7/squeeze1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire7/squeeze1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(48, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A6EEEB"> 26.873856 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFE7FC"> 848.72 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBC"> 0.67 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire6/expand1x1" -> "fire7/squeeze1x1"
+	"fire6/expand3x3" -> "fire7/squeeze1x1"
+	"fire7/expand1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire7/expand1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ABEFED"> 13.436928 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 164.58 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC0"> 0.51 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire7/squeeze1x1" -> "fire7/expand1x1"
+	"fire7/expand3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire7/expand3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#83E5E0"> 120.932352 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 268.12 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF8A"> 2.84 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire7/squeeze1x1" -> "fire7/expand3x3"
+	"fire8/squeeze1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire8/squeeze1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A3EDEA"> 35.831808 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFE7FD"> 750.54 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBA"> 0.77 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire7/expand1x1" -> "fire8/squeeze1x1"
+	"fire7/expand3x3" -> "fire8/squeeze1x1"
+	"fire8/expand1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire8/expand1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A8EEEC"> 23.887872 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 168.89 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBB"> 0.71 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire8/squeeze1x1" -> "fire8/expand1x1"
+	"fire8/expand3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire8/expand3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 27, 27)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#60DDD5"> 214.990848 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 199.28 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF4E"> 5.45 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire8/squeeze1x1" -> "fire8/expand3x3"
+	pool8 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool8</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.778752 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFE5FC"> 1316.71 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBF"> 0.54 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire8/expand1x1" -> pool8
+	"fire8/expand3x3" -> pool8
+	"fire9/squeeze1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire9/squeeze1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ACEFED"> 11.075584 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E7FD"> 597.69 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC3"> 0.38 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	pool8 -> "fire9/squeeze1x1"
+	"fire9/expand1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire9/expand1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AEF0EE"> 5.537792 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E9FD"> 154.89 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC4"> 0.34 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire9/squeeze1x1" -> "fire9/expand1x1"
+	"fire9/expand3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">fire9/expand3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#9EECE9"> 49.840128 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 314.77 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFA9"> 1.50 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire9/squeeze1x1" -> "fire9/expand3x3"
+	conv10 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv10</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1000, 13, 13)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#6FE1DA"> 173.056 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 338.70 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF7E"> 3.37 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"fire9/expand1x1" -> conv10
+	"fire9/expand3x3" -> conv10
+	pool10 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool10</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1000, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.338 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FFE7FD"> 675.95 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC1"> 0.48 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	conv10 -> pool10
+	prob [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">prob</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1000, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.003 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E9FE"> 9.99 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC7"> 0.19 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	pool10 -> prob
+	Output [label="output: [227, 227, 1003]"]
+	data -> Output
+	prob -> Output
+	Summary [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR><TD  BGCOLOR = "#C60000" COLSPAN="3">Summary</TD></TR>
+<TR><TD  BGCOLOR = "#E2E2E2" COLSPAN="3">12 SHV Processors</TD></TR>
+<TR><TD  BGCOLOR = "#DADADA" COLSPAN="3">Inference time 46.51 ms</TD></TR>
+<TR><TD  BGCOLOR = "#E2E2E2" COLSPAN="3">Bandwidth 701.56 MB/sec</TD></TR>
+<TR><TD  BGCOLOR = "#DADADA" COLSPAN="3">This network is Compute bound</TD></TR>
+</TABLE>>
+ shape=plaintext]
+}

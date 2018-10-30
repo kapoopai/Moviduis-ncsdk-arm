@@ -1,0 +1,1318 @@
+digraph output {
+	Legend [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR><TD  BGCOLOR = "#E0E0E0" COLSPAN="3">Layer</TD></TR>
+<TR><TD BGCOLOR = "#88FFFF"> Complexity <br/> (MFLOPs) </TD>
+<TD BGCOLOR = "#FF88FF"> Bandwidth <br/> (MB/s) </TD>
+<TD BGCOLOR = "#FFFF88"> Time <br/> (ms)</TD></TR>
+</TABLE>>
+ shape=plaintext]
+	Input [label="input: (224, 224, 3)"]
+	data [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">data</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(3, 224, 224)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#B1179D"> 61109.99 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFCC"> 0.00 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	Input -> data
+	"conv1/7x7_s2" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv1/7x7_s2</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 112, 112)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#2ED1C6"> 236.027904 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FEE4FB"> 2454.64 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF6A"> 5.74 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	Input -> "conv1/7x7_s2"
+	"pool1/3x3_s2" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool1/3x3_s2</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 56, 56)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AFF0EE"> 1.806336 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 1347.51 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB8"> 1.14 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"conv1/7x7_s2" -> "pool1/3x3_s2"
+	"pool1/norm1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool1/norm1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 56, 56)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 706.10 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC2"> 0.54 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool1/3x3_s2" -> "pool1/norm1"
+	"conv2/3x3_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv2/3x3_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 56, 56)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A2EDEA"> 25.690112 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 454.35 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBD"> 0.86 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool1/norm1" -> "conv2/3x3_reduce"
+	"conv2/3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv2/3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 56, 56)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#-CF9276"> 693.633024 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 304.07 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF0"> 12.03 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"conv2/3x3_reduce" -> "conv2/3x3"
+	"conv2/norm2" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">conv2/norm2</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 56, 56)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B1F1EF"> 0.0 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EAFE"> 769.89 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB2"> 1.49 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"conv2/3x3" -> "conv2/norm2"
+	"pool2/3x3_s2" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool2/3x3_s2</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 1.354752 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E8FD"> 1401.11 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBE"> 0.82 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"conv2/norm2" -> "pool2/3x3_s2"
+	"inception_3a/1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3a/1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A6EEEB"> 19.267584 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 555.90 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC2"> 0.56 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool2/3x3_s2" -> "inception_3a/1x1"
+	"inception_3a/3x3_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3a/3x3_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(96, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A0EDE9"> 28.901376 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 457.22 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC0"> 0.70 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool2/3x3_s2" -> "inception_3a/3x3_reduce"
+	"inception_3a/3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3a/3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#50D9D0"> 173.408256 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 317.05 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF7B"> 4.75 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_3a/3x3_reduce" -> "inception_3a/3x3"
+	"inception_3a/5x5_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3a/5x5_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(16, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AEF0EE"> 4.816896 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E9FE"> 1047.54 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC7"> 0.28 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool2/3x3_s2" -> "inception_3a/5x5_reduce"
+	"inception_3a/5x5" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3a/5x5</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(32, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A5EEEB"> 20.0704 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 714.70 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBD"> 0.87 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_3a/5x5_reduce" -> "inception_3a/5x5"
+	"inception_3a/pool" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3a/pool</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 1.354752 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 649.07 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC4"> 0.44 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool2/3x3_s2" -> "inception_3a/pool"
+	"inception_3a/pool_proj" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3a/pool_proj</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(32, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ABEFED"> 9.633792 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 655.94 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC4"> 0.46 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_3a/pool" -> "inception_3a/pool_proj"
+	"inception_3b/1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3b/1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#94EAE6"> 51.380224 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 445.73 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBB"> 1.00 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_3a/1x1" -> "inception_3b/1x1"
+	"inception_3a/3x3" -> "inception_3b/1x1"
+	"inception_3a/5x5" -> "inception_3b/1x1"
+	"inception_3a/pool_proj" -> "inception_3b/1x1"
+	"inception_3b/3x3_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3b/3x3_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#94EAE6"> 51.380224 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 444.47 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBB"> 1.00 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_3a/1x1" -> "inception_3b/3x3_reduce"
+	"inception_3a/3x3" -> "inception_3b/3x3_reduce"
+	"inception_3a/5x5" -> "inception_3b/3x3_reduce"
+	"inception_3a/pool_proj" -> "inception_3b/3x3_reduce"
+	"inception_3b/3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3b/3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#-FC1B2"> 346.816512 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 260.33 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF40"> 8.25 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_3b/3x3_reduce" -> "inception_3b/3x3"
+	"inception_3b/5x5_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3b/5x5_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(32, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A9EFEC"> 12.845056 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EAFE"> 882.00 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC4"> 0.45 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_3a/1x1" -> "inception_3b/5x5_reduce"
+	"inception_3a/3x3" -> "inception_3b/5x5_reduce"
+	"inception_3a/5x5" -> "inception_3b/5x5_reduce"
+	"inception_3a/pool_proj" -> "inception_3b/5x5_reduce"
+	"inception_3b/5x5" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3b/5x5</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(96, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#6EE0DA"> 120.4224 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 536.61 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFA1"> 2.51 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_3b/5x5_reduce" -> "inception_3b/5x5"
+	"inception_3b/pool" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3b/pool</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AFF0EE"> 1.806336 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 678.73 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC2"> 0.56 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_3a/1x1" -> "inception_3b/pool"
+	"inception_3a/3x3" -> "inception_3b/pool"
+	"inception_3a/5x5" -> "inception_3b/pool"
+	"inception_3a/pool_proj" -> "inception_3b/pool"
+	"inception_3b/pool_proj" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_3b/pool_proj</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 28, 28)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A2EDEA"> 25.690112 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 634.52 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC1"> 0.65 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_3b/pool" -> "inception_3b/pool_proj"
+	"pool3/3x3_s2" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool3/3x3_s2</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(480, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.84672 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E9FD"> 1216.29 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC2"> 0.59 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_3b/1x1" -> "pool3/3x3_s2"
+	"inception_3b/3x3" -> "pool3/3x3_s2"
+	"inception_3b/5x5" -> "pool3/3x3_s2"
+	"inception_3b/pool_proj" -> "pool3/3x3_s2"
+	"inception_4a/1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4a/1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#9CECE8"> 36.12672 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 371.91 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBB"> 0.96 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool3/3x3_s2" -> "inception_4a/1x1"
+	"inception_4a/3x3_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4a/3x3_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(96, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A6EEEB"> 18.06336 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 490.34 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC2"> 0.55 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool3/3x3_s2" -> "inception_4a/3x3_reduce"
+	"inception_4a/3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4a/3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(208, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#89E7E2"> 70.447104 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 297.52 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFA5"> 2.25 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4a/3x3_reduce" -> "inception_4a/3x3"
+	"inception_4a/5x5_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4a/5x5_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(16, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AFF0EE"> 3.01056 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EAFE"> 767.16 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC7"> 0.25 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool3/3x3_s2" -> "inception_4a/5x5_reduce"
+	"inception_4a/5x5" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4a/5x5</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(48, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ACEFED"> 7.5264 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 458.03 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC5"> 0.41 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4a/5x5_reduce" -> "inception_4a/5x5"
+	"inception_4a/pool" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4a/pool</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(480, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.84672 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 603.66 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC6"> 0.30 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool3/3x3_s2" -> "inception_4a/pool"
+	"inception_4a/pool_proj" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4a/pool_proj</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AAEFEC"> 12.04224 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 616.78 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC5"> 0.39 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4a/pool" -> "inception_4a/pool_proj"
+	"inception_4b/1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4b/1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(160, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#9FECE9"> 32.11264 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 338.74 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBA"> 1.03 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4a/1x1" -> "inception_4b/1x1"
+	"inception_4a/3x3" -> "inception_4b/1x1"
+	"inception_4a/5x5" -> "inception_4b/1x1"
+	"inception_4a/pool_proj" -> "inception_4b/1x1"
+	"inception_4b/3x3_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4b/3x3_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(112, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A4EDEB"> 22.478848 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 376.82 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBE"> 0.80 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4a/1x1" -> "inception_4b/3x3_reduce"
+	"inception_4a/3x3" -> "inception_4b/3x3_reduce"
+	"inception_4a/5x5" -> "inception_4b/3x3_reduce"
+	"inception_4a/pool_proj" -> "inception_4b/3x3_reduce"
+	"inception_4b/3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4b/3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(224, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#7FE5DF"> 88.510464 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 286.09 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF9B"> 2.84 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4b/3x3_reduce" -> "inception_4b/3x3"
+	"inception_4b/5x5_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4b/5x5_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(24, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AEF0EE"> 4.816896 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 577.07 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC5"> 0.37 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4a/1x1" -> "inception_4b/5x5_reduce"
+	"inception_4a/3x3" -> "inception_4b/5x5_reduce"
+	"inception_4a/5x5" -> "inception_4b/5x5_reduce"
+	"inception_4a/pool_proj" -> "inception_4b/5x5_reduce"
+	"inception_4b/5x5" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4b/5x5</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A8EEEC"> 15.0528 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 338.30 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBC"> 0.89 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4b/5x5_reduce" -> "inception_4b/5x5"
+	"inception_4b/pool" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4b/pool</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.903168 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 616.49 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC6"> 0.31 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4a/1x1" -> "inception_4b/pool"
+	"inception_4a/3x3" -> "inception_4b/pool"
+	"inception_4a/5x5" -> "inception_4b/pool"
+	"inception_4a/pool_proj" -> "inception_4b/pool"
+	"inception_4b/pool_proj" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4b/pool_proj</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A9EFEC"> 12.845056 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 577.84 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC4"> 0.44 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4b/pool" -> "inception_4b/pool_proj"
+	"inception_4c/1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4c/1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A2EDEA"> 25.690112 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 395.90 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBE"> 0.80 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4b/1x1" -> "inception_4c/1x1"
+	"inception_4b/3x3" -> "inception_4c/1x1"
+	"inception_4b/5x5" -> "inception_4c/1x1"
+	"inception_4b/pool_proj" -> "inception_4c/1x1"
+	"inception_4c/3x3_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4c/3x3_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A2EDEA"> 25.690112 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 400.86 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBE"> 0.79 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4b/1x1" -> "inception_4c/3x3_reduce"
+	"inception_4b/3x3" -> "inception_4c/3x3_reduce"
+	"inception_4b/5x5" -> "inception_4c/3x3_reduce"
+	"inception_4b/pool_proj" -> "inception_4c/3x3_reduce"
+	"inception_4c/3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4c/3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#70E1DA"> 115.605504 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 276.92 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF8E"> 3.60 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4c/3x3_reduce" -> "inception_4c/3x3"
+	"inception_4c/5x5_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4c/5x5_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(24, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AEF0EE"> 4.816896 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 571.66 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC5"> 0.38 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4b/1x1" -> "inception_4c/5x5_reduce"
+	"inception_4b/3x3" -> "inception_4c/5x5_reduce"
+	"inception_4b/5x5" -> "inception_4c/5x5_reduce"
+	"inception_4b/pool_proj" -> "inception_4c/5x5_reduce"
+	"inception_4c/5x5" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4c/5x5</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A8EEEC"> 15.0528 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 341.11 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBD"> 0.88 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4c/5x5_reduce" -> "inception_4c/5x5"
+	"inception_4c/pool" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4c/pool</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.903168 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 614.92 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC6"> 0.31 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4b/1x1" -> "inception_4c/pool"
+	"inception_4b/3x3" -> "inception_4c/pool"
+	"inception_4b/5x5" -> "inception_4c/pool"
+	"inception_4b/pool_proj" -> "inception_4c/pool"
+	"inception_4c/pool_proj" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4c/pool_proj</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A9EFEC"> 12.845056 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 571.84 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC4"> 0.44 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4c/pool" -> "inception_4c/pool_proj"
+	"inception_4d/1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4d/1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(112, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A4EDEB"> 22.478848 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 398.25 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBF"> 0.76 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4c/1x1" -> "inception_4d/1x1"
+	"inception_4c/3x3" -> "inception_4d/1x1"
+	"inception_4c/5x5" -> "inception_4d/1x1"
+	"inception_4c/pool_proj" -> "inception_4d/1x1"
+	"inception_4d/3x3_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4d/3x3_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(144, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A0EDE9"> 28.901376 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 489.47 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC0"> 0.68 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4c/1x1" -> "inception_4d/3x3_reduce"
+	"inception_4c/3x3" -> "inception_4d/3x3_reduce"
+	"inception_4c/5x5" -> "inception_4d/3x3_reduce"
+	"inception_4c/pool_proj" -> "inception_4d/3x3_reduce"
+	"inception_4d/3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4d/3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(288, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#5FDDD5"> 146.313216 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 402.37 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF99"> 2.99 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4d/3x3_reduce" -> "inception_4d/3x3"
+	"inception_4d/5x5_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4d/5x5_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(32, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ADF0ED"> 6.422528 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 735.97 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC6"> 0.30 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4c/1x1" -> "inception_4d/5x5_reduce"
+	"inception_4c/3x3" -> "inception_4d/5x5_reduce"
+	"inception_4c/5x5" -> "inception_4d/5x5_reduce"
+	"inception_4c/pool_proj" -> "inception_4d/5x5_reduce"
+	"inception_4d/5x5" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4d/5x5</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A5EEEB"> 20.0704 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 407.97 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBB"> 0.98 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4d/5x5_reduce" -> "inception_4d/5x5"
+	"inception_4d/pool" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4d/pool</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(512, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.903168 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 629.71 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC6"> 0.30 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4c/1x1" -> "inception_4d/pool"
+	"inception_4c/3x3" -> "inception_4d/pool"
+	"inception_4c/5x5" -> "inception_4d/pool"
+	"inception_4c/pool_proj" -> "inception_4d/pool"
+	"inception_4d/pool_proj" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4d/pool_proj</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(64, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A9EFEC"> 12.845056 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 626.50 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC5"> 0.41 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4d/pool" -> "inception_4d/pool_proj"
+	"inception_4e/1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4e/1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#93E9E5"> 52.985856 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 299.99 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB2"> 1.52 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4d/1x1" -> "inception_4e/1x1"
+	"inception_4d/3x3" -> "inception_4e/1x1"
+	"inception_4d/5x5" -> "inception_4e/1x1"
+	"inception_4d/pool_proj" -> "inception_4e/1x1"
+	"inception_4e/3x3_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4e/3x3_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(160, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#9EECE9"> 33.11616 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 281.28 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB6"> 1.27 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4d/1x1" -> "inception_4e/3x3_reduce"
+	"inception_4d/3x3" -> "inception_4e/3x3_reduce"
+	"inception_4d/5x5" -> "inception_4e/3x3_reduce"
+	"inception_4d/pool_proj" -> "inception_4e/3x3_reduce"
+	"inception_4e/3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4e/3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(320, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#4CD8CF"> 180.6336 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 288.68 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFF78"> 4.93 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4e/3x3_reduce" -> "inception_4e/3x3"
+	"inception_4e/5x5_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4e/5x5_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(32, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ADF0ED"> 6.623232 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 492.81 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC4"> 0.47 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4d/1x1" -> "inception_4e/5x5_reduce"
+	"inception_4d/3x3" -> "inception_4e/5x5_reduce"
+	"inception_4d/5x5" -> "inception_4e/5x5_reduce"
+	"inception_4d/pool_proj" -> "inception_4e/5x5_reduce"
+	"inception_4e/5x5" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4e/5x5</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#9AEBE8"> 40.1408 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 378.82 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB5"> 1.32 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4e/5x5_reduce" -> "inception_4e/5x5"
+	"inception_4e/pool" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4e/pool</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(528, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.931392 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 621.46 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC6"> 0.32 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4d/1x1" -> "inception_4e/pool"
+	"inception_4d/3x3" -> "inception_4e/pool"
+	"inception_4d/5x5" -> "inception_4e/pool"
+	"inception_4d/pool_proj" -> "inception_4e/pool"
+	"inception_4e/pool_proj" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_4e/pool_proj</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 14, 14)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A2EDEA"> 26.492928 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 447.86 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBF"> 0.73 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4e/pool" -> "inception_4e/pool_proj"
+	"pool4/3x3_s2" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool4/3x3_s2</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(832, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.366912 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#100E9FD"> 1245.36 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC7"> 0.25 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_4e/1x1" -> "pool4/3x3_s2"
+	"inception_4e/3x3" -> "pool4/3x3_s2"
+	"inception_4e/5x5" -> "pool4/3x3_s2"
+	"inception_4e/pool_proj" -> "pool4/3x3_s2"
+	"inception_5a/1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5a/1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(256, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A5EEEB"> 20.873216 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 616.72 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBE"> 0.79 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool4/3x3_s2" -> "inception_5a/1x1"
+	"inception_5a/3x3_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5a/3x3_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(160, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A9EFEC"> 13.04576 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 567.14 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC2"> 0.58 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool4/3x3_s2" -> "inception_5a/3x3_reduce"
+	"inception_5a/3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5a/3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(320, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#97EAE7"> 45.1584 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 601.63 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFAF"> 1.69 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_5a/3x3_reduce" -> "inception_5a/3x3"
+	"inception_5a/5x5_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5a/5x5_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(32, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AFF0EE"> 2.609152 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 326.69 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC5"> 0.39 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool4/3x3_s2" -> "inception_5a/5x5_reduce"
+	"inception_5a/5x5" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5a/5x5</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ABEFED"> 10.0352 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 458.99 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC1"> 0.60 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_5a/5x5_reduce" -> "inception_5a/5x5"
+	"inception_5a/pool" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5a/pool</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(832, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.366912 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 532.73 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC9"> 0.15 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool4/3x3_s2" -> "inception_5a/pool"
+	"inception_5a/pool_proj" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5a/pool_proj</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ABEFED"> 10.436608 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 515.27 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC2"> 0.55 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_5a/pool" -> "inception_5a/pool_proj"
+	"inception_5b/1x1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5b/1x1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(384, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#9FECE9"> 31.309824 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 594.87 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFB8"> 1.16 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_5a/1x1" -> "inception_5b/1x1"
+	"inception_5a/3x3" -> "inception_5b/1x1"
+	"inception_5a/5x5" -> "inception_5b/1x1"
+	"inception_5a/pool_proj" -> "inception_5b/1x1"
+	"inception_5b/3x3_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5b/3x3_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(192, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A8EEEC"> 15.654912 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 608.63 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC1"> 0.63 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_5a/1x1" -> "inception_5b/3x3_reduce"
+	"inception_5a/3x3" -> "inception_5b/3x3_reduce"
+	"inception_5a/5x5" -> "inception_5b/3x3_reduce"
+	"inception_5a/pool_proj" -> "inception_5b/3x3_reduce"
+	"inception_5b/3x3" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5b/3x3</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(384, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#8CE8E3"> 65.028096 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFE"> 590.10 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFA2"> 2.43 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_5b/3x3_reduce" -> "inception_5b/3x3"
+	"inception_5b/5x5_reduce" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5b/5x5_reduce</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(48, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#AEF0EE"> 3.913728 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 373.36 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC5"> 0.41 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_5a/1x1" -> "inception_5b/5x5_reduce"
+	"inception_5a/3x3" -> "inception_5b/5x5_reduce"
+	"inception_5a/5x5" -> "inception_5b/5x5_reduce"
+	"inception_5a/pool_proj" -> "inception_5b/5x5_reduce"
+	"inception_5b/5x5" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5b/5x5</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#A8EEEC"> 15.0528 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 477.61 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBD"> 0.86 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_5b/5x5_reduce" -> "inception_5b/5x5"
+	"inception_5b/pool" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5b/pool</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(832, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.366912 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 530.92 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC9"> 0.15 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_5a/1x1" -> "inception_5b/pool"
+	"inception_5a/3x3" -> "inception_5b/pool"
+	"inception_5a/5x5" -> "inception_5b/pool"
+	"inception_5a/pool_proj" -> "inception_5b/pool"
+	"inception_5b/pool_proj" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">inception_5b/pool_proj</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(128, 7, 7)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#ABEFED"> 10.436608 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101EBFF"> 515.17 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC2"> 0.55 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_5b/pool" -> "inception_5b/pool_proj"
+	"pool5/7x7_s1" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">pool5/7x7_s1</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1024, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.100352 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#101ECFF"> 405.63 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC8"> 0.24 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"inception_5b/1x1" -> "pool5/7x7_s1"
+	"inception_5b/3x3" -> "pool5/7x7_s1"
+	"inception_5b/5x5" -> "pool5/7x7_s1"
+	"inception_5b/pool_proj" -> "pool5/7x7_s1"
+	"loss3/classifier" [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">loss3/classifier</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1000, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.002048 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#FEE4FB"> 2559.11 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFBF"> 0.76 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"pool5/7x7_s1" -> "loss3/classifier"
+	prob [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR>
+    <TD  BGCOLOR = "#A3A3A3" COLSPAN="3">prob</TD>
+</TR>
+<TR>
+    <TD  BGCOLOR = "#DDDDDD" COLSPAN="3">(1000, 1, 1)</TD>
+</TR>
+<TR>
+    <TD BGCOLOR = "#B0F0EE"> 0.003 <br/> (MFLOPs) </TD>
+    <TD BGCOLOR = "#102EDFF"> 9.96 <br/> (MB/s) </TD>
+    <TD BGCOLOR = "#FFFFC8"> 0.19 <br/> (ms)</TD>
+</TR>
+</TABLE>>
+ shape=plaintext]
+	"loss3/classifier" -> prob
+	Output [label="output: [224, 224, 1003]"]
+	data -> Output
+	prob -> Output
+	Summary [label=<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="3">
+<TR><TD  BGCOLOR = "#C60000" COLSPAN="3">Summary</TD></TR>
+<TR><TD  BGCOLOR = "#E2E2E2" COLSPAN="3">12 SHV Processors</TD></TR>
+<TR><TD  BGCOLOR = "#DADADA" COLSPAN="3">Inference time 94.02 ms</TD></TR>
+<TR><TD  BGCOLOR = "#E2E2E2" COLSPAN="3">Bandwidth 579.31 MB/sec</TD></TR>
+<TR><TD  BGCOLOR = "#DADADA" COLSPAN="3">This network is Compute bound</TD></TR>
+</TABLE>>
+ shape=plaintext]
+}
